@@ -1,6 +1,7 @@
-from flask import Flask
-app = Flask(__name__)
+from flask import Flask, render_template, request, redirect, url_for
+import os
 
+app = Flask(__name__)
 
 tasks = []
 
@@ -27,9 +28,6 @@ def delete(task_id):
         tasks.pop(task_id)
     return redirect(url_for('index'))
 
-import os
-
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 10000))
     app.run(debug=True, host='0.0.0.0', port=port)
-
